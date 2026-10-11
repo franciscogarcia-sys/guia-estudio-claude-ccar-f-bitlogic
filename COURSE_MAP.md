@@ -1,24 +1,43 @@
-# Mapa del curso backbone
+# Course Map — Jacob Bushong → guía Bitlogic
 
-**Curso:** Jacob Bushong — *Claude Certified Architect (CCAR-F) - 2026 Exam Prep*
+Este archivo existe por trazabilidad.
 
-Este archivo registra cómo se transforma el curso en la guía.
+La guía **no copia el orden de las lectures de forma ciega**. Conservamos el coverage del curso de Jacob Bushong, pero reorganizamos los conceptos cuando eso mejora la comprensión.
 
-## Sección 1 — Exam / Welcome
+La source of truth sigue siendo el Exam Guide y la documentación oficial vigente.
 
-El contenido administrativo del curso se reemplaza por información oficial y revalidada en:
+---
 
-- [`01-exam-overview/README.md`](01-exam-overview/README.md)
+# Principio
 
-## Sección 2 — D1: Agentic Architecture - Foundations
+```text
+Jacob
+→ coverage / ideas
+→ validación oficial
+→ reorganización pedagógica
+→ capítulo narrativo
+→ lab
+→ preguntas
+→ blueprint tracking
+```
 
-Estado: **COMPLETA**
+---
 
-Guía:
+# Section 1 — Welcome / Exam information
 
-- [`02-agentic-architecture-foundations/README.md`](02-agentic-architecture-foundations/README.md)
+El contenido administrativo no se replica desde Udemy.
 
-Contenido procesado:
+Se reemplaza por información oficial y una explicación propia:
+
+👉 [Capítulo 1 — El examen CCAR-F](01-exam-overview/README.md)
+
+---
+
+# Section 2 — D1: Agentic Architecture - Foundations
+
+Estado: **procesada y convertida a capítulo narrativo**.
+
+Lectures base:
 
 - Agents, Workflows, and Chatbots — What's Actually Different
 - Tool Use as the Foundation of Agency
@@ -27,10 +46,55 @@ Contenido procesado:
 - When Workflows Outperform Agents
 - Choosing the Right Architecture
 
-> La lecture de feedback no agrega contenido técnico y no se incorpora como capítulo.
+La lecture de feedback no contiene contenido técnico necesario para la guía.
 
-## Próximo bloque
+Resultado:
 
-`D1: Agentic Architecture - Task Decomposition & Planning`
+👉 [Capítulo 2 — De un LLM a un Agent](02-agentic-architecture-foundations/README.md)
 
-Se agregará cuando se disponga de la transcripción correspondiente.
+Aplicación:
+
+👉 [BitSupport — Lab 1](lab-bit-support/01-agentic-loop/README.md)
+
+---
+
+# Section 3 — D1: Agentic Architecture - Task Decomposition & Planning
+
+Estado: **siguiente**.
+
+Cuando se reciba la transcripción:
+
+1. se extraerán conceptos;
+2. se validarán contra Anthropic;
+3. se decidirá el orden pedagógico;
+4. se conectará con Capítulo 2;
+5. se agregará una nueva evolución de BitSupport;
+6. se actualizarán preguntas, glossary y blueprint coverage.
+
+---
+
+# Secciones posteriores del curso
+
+El orden de cobertura base es:
+
+1. Agentic Architecture - Foundations
+2. Task Decomposition & Planning
+3. Multi-Agent Orchestration
+4. Reliability & Human Oversight
+5. Tool Design Fundamentals
+6. Building MCP Servers
+7. MCP Production & Built-in Tools
+8. Claude Code - Architecture & Setup
+9. Claude Code - `CLAUDE.md` Configuration
+10. Slash Commands, Skills & Subagents
+11. Hooks, SDK & CI/CD
+12. Writing Effective Prompts
+13. Advanced Prompting Techniques
+14. Structured Output & Evaluation
+15. The Context Window
+16. Multi-Agent Failure Modes
+17. Cross-Session Knowledge & Coherence
+18. Confidence, Sampling & Provenance
+19. Practice Exams
+
+El [ROADMAP.md](ROADMAP.md) es la navegación que debe usar el estudiante.
