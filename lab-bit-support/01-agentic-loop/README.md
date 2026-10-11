@@ -51,11 +51,14 @@ Instalá:
 pip install anthropic
 ```
 
-Configurá la API key según tu sistema operativo:
+Configurá la API key y un model disponible en tu cuenta según tu sistema operativo:
 
 ```text
 ANTHROPIC_API_KEY=<tu-api-key>
+CLAUDE_MODEL=<model-id-vigente>
 ```
+
+Usamos una variable para el model porque los model IDs cambian con el tiempo. Consultá la documentación oficial vigente antes de ejecutar el lab.
 
 > No subas API keys al repositorio.
 
