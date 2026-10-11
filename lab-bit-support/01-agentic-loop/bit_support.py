@@ -22,6 +22,7 @@ from anthropic import Anthropic
 MAX_TURNS = 6
 
 client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+MODEL = os.environ["CLAUDE_MODEL"]
 
 
 def get_deployment_status(service: str, environment: str) -> dict[str, Any]:
@@ -108,7 +109,7 @@ def main() -> None:
 
     for turn in range(1, MAX_TURNS + 1):
         response = client.messages.create(
-            model="claude-sonnet-4-5",
+            model=MODEL,
             max_tokens=800,
             tools=TOOLS,
             messages=messages,
