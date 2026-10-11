@@ -1,71 +1,118 @@
-# Protocolo de estudio y calidad
+# Protocolo editorial y de estudio
 
-Cada sección debe cumplir estas reglas antes de considerarse completa.
+Este documento define cómo se escribe cada capítulo de la guía.
 
-## 1. Fuente de verdad
+La principal regla es:
 
-Prioridad:
+> **No estamos escribiendo apuntes. Estamos escribiendo un libro técnico guiado.**
 
-1. **CCAR-F Exam Guide**
-2. documentación oficial de Anthropic
-3. curso de Jacob Bushong
-4. fuentes complementarias de alta calidad
+---
 
-## 2. Estructura pedagógica fija
+# 1. Para quién escribimos
 
-Cada capítulo técnico debe seguir, cuando aplique:
+El lector es un Software Engineer, desde junior hasta senior.
 
-1. Objetivo
-2. Por qué importa
-3. Intuición
-4. Conceptos
-5. Terminología en English
-6. Ejemplo concreto
-7. Diagrama
-8. Implementación / pseudocódigo
-9. Trade-offs
-10. Anti-patterns
-11. 🔴 EXAM CRITICAL
-12. Exam traps
-13. Summary end-to-end
-14. Preguntas de repaso
-15. Respuestas ocultas con `<details>`
-16. Fuentes
+Eso implica dos cosas simultáneamente:
 
-## 3. Criterio de claridad
+- no asumir conocimiento previo de Claude, agents, MCP o Claude Code;
+- no simplificar tanto que el material pierda precisión técnica.
 
-Una persona con poca experiencia debe poder seguir el hilo sin conocer el tema previamente.
+Cada concepto debe poder ser entendido por alguien que recién empieza y seguir siendo útil para alguien experimentado.
 
-Se prioriza:
+---
 
-- ejemplos concretos antes que abstracciones;
-- definiciones breves antes que excepciones;
-- una idea por sección;
-- diagramas para mecanismos con varias etapas;
-- tablas sólo cuando comparan conceptos;
-- términos en English siempre visibles.
+# 2. La narrativa manda sobre el índice
 
-## 4. Validación
+No se empieza una sección diciendo:
 
-Antes de consolidar una sección:
+```text
+Definición A
+Definición B
+Definición C
+```
 
-- verificar conceptos técnicos con documentación oficial;
-- detectar información potencialmente desactualizada;
-- separar claramente información del curso de complementos propios;
-- corregir contradicciones;
-- evitar memorizar detalles no incluidos en el scope del examen.
+Se empieza con un problema o una necesidad.
 
-## 5. Práctica
+Ejemplo:
 
-Se agrega un lab cuando la experiencia hands-on ayuda materialmente.
+> “BitSupport ya puede responder preguntas, pero ahora un usuario quiere saber si un deploy falló. Claude no tiene acceso al pipeline. ¿Qué necesitamos agregar?”
 
-Lenguaje principal: **Python**.
+Sólo entonces aparece el concepto de **tool use**.
 
-No se crean labs artificiales para contenido puramente conceptual.
+La secuencia preferida es:
 
-## 6. Preguntas
+```text
+problema
+→ intuición
+→ concepto
+→ mecanismo
+→ ejemplo
+→ aplicación
+→ trade-off
+→ conexión con lo anterior
+```
 
-Las respuestas quedan ocultas en GitHub:
+---
+
+# 3. Cada concepto debe tener una causa
+
+Antes de introducir una palabra nueva, el texto debe responder implícita o explícitamente:
+
+> **¿por qué necesitamos aprender esto ahora?**
+
+Si un término puede eliminarse sin romper la comprensión del capítulo, probablemente todavía no sea el momento de introducirlo.
+
+---
+
+# 4. Proyecto transversal: BitSupport
+
+Todos los capítulos deben intentar conectar el contenido con **BitSupport**, el laboratorio principal.
+
+BitSupport evoluciona junto con el libro.
+
+```text
+simple assistant
+→ tools
+→ workflows
+→ agent
+→ planning
+→ subagents
+→ MCP
+→ Claude Code
+→ reliability
+→ production
+```
+
+Los ejemplos independientes están permitidos cuando ayudan a explicar mejor una idea, pero el lector siempre debe poder volver al proyecto central.
+
+---
+
+# 5. Anatomía de un capítulo
+
+No es una plantilla rígida, pero un buen capítulo suele tener:
+
+1. apertura narrativa;
+2. problema que motiva el tema;
+3. construcción progresiva del mental model;
+4. diagramas;
+5. ejemplos concretos;
+6. conexión con BitSupport;
+7. código o pseudocódigo cuando corresponda;
+8. 💭 **Pensalo antes de seguir**;
+9. 🧪 **Probalo vos**;
+10. 🧩 **Challenge**;
+11. 🔴 **EXAM CRITICAL**;
+12. trade-offs y failure modes;
+13. exam traps;
+14. summary narrativo end-to-end;
+15. preguntas finales con respuestas ocultas;
+16. transición explícita al próximo capítulo.
+
+---
+
+# 6. Respuestas ocultas
+
+GitHub permite utilizar:
 
 ```html
 <details>
@@ -76,21 +123,104 @@ Respuesta y explicación.
 </details>
 ```
 
-Así se puede intentar responder antes de revelar la solución.
+Cuando una pregunta es multiple-choice, la explicación debe cubrir:
 
-## 7. Cierre de sección
+- por qué la correcta es mejor;
+- por qué cada distractor es peor;
+- qué señal del scenario permite decidir.
 
-Checklist:
+---
 
-- [ ] contenido del curso procesado;
-- [ ] documentación oficial contrastada;
-- [ ] gaps relevantes completados;
-- [ ] ejemplos claros;
-- [ ] diagrama cuando aporta;
-- [ ] trade-offs;
-- [ ] exam traps;
-- [ ] summary end-to-end;
-- [ ] preguntas;
-- [ ] glossary actualizado;
-- [ ] blueprint coverage actualizado;
-- [ ] fast review actualizado.
+# 7. Visuales
+
+Usar el formato que mejor explique la idea:
+
+- **Mermaid** para arquitecturas, flows y sequence diagrams;
+- diagramas propios cuando Mermaid no alcance;
+- screenshots cuando la UI sea parte del aprendizaje;
+- imágenes externas sólo si agregan valor y su uso es apropiado.
+
+Una imagen nunca debe estar sólo para decorar.
+
+---
+
+# 8. Código
+
+Lenguaje principal: **Python**.
+
+El código debe aparecer cuando ayuda a entender el mecanismo.
+
+Primero se explica la idea. Después se muestra el código.
+
+No asumir que el lector entiende una API sólo porque ve un snippet.
+
+---
+
+# 9. Jerarquía de fuentes
+
+1. **CCAR-F Exam Guide**
+2. documentación oficial y engineering material de Anthropic
+3. curso de Jacob Bushong
+4. fuentes complementarias confiables
+
+Jacob es el backbone de cobertura, pero no es la source of truth.
+
+Si hay:
+
+- información desactualizada;
+- una simplificación excesiva;
+- una contradicción;
+- un gap importante;
+
+se corrige o complementa y se registra cuando corresponde.
+
+---
+
+# 10. Distinción de importancia
+
+### 🔴 EXAM CRITICAL
+Hay que dominarlo.
+
+### 🟠 IMPORTANT
+Necesario para razonar correctamente.
+
+### 🟡 CONTEXT
+Ayuda a formar el mental model, pero tiene menor prioridad de memorización.
+
+No abusar de estas etiquetas. Si todo es crítico, nada es crítico.
+
+---
+
+# 11. Summary end-to-end
+
+El cierre no debe ser una lista de definiciones.
+
+Debe reconstruir la historia.
+
+Ejemplo:
+
+> “Empezamos con un LLM que sólo podía generar una respuesta. Cuando quisimos consultar información externa apareció el action–environment gap. Las tools cerraron ese gap, pero necesitamos un runtime que ejecutara las acciones y devolviera observations. Esa realimentación creó el agentic loop…”
+
+El lector debe terminar sintiendo que puede volver a contar el capítulo con sus propias palabras.
+
+---
+
+# 12. Criterio de cierre
+
+Un capítulo pasa a **COMPLETO** sólo si:
+
+- [ ] el contenido base fue procesado;
+- [ ] la documentación oficial fue contrastada;
+- [ ] se completaron gaps relevantes;
+- [ ] existe un hilo narrativo;
+- [ ] los conceptos se conectan entre sí;
+- [ ] hay ejemplos;
+- [ ] hay visuales cuando aportan;
+- [ ] existe aplicación a BitSupport;
+- [ ] hay ejercicios;
+- [ ] hay preguntas con respuestas razonadas;
+- [ ] existe summary end-to-end;
+- [ ] está clara la transición al próximo capítulo;
+- [ ] Blueprint Coverage fue actualizado;
+- [ ] Glossary fue actualizado;
+- [ ] Fast Review fue actualizado.
