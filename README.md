@@ -1,180 +1,52 @@
-# Guía de estudio para Claude CCAR-F - Bitlogic
+# Claude Certified Architect – Foundations (CCAR-F): ruta de preparación
 
-> Un recorrido guiado, práctico y progresivo para aprender **Claude Certified Architect – Foundations (CCAR-F)** desde los fundamentos hasta el examen.
+Guía en español para preparar y aprobar el **Claude Certified Architect – Foundations (CCAR-F)** de Anthropic. Reúne todo lo que se usó en una preparación real que terminó con el examen aprobado: cómo es el examen, el orden de estudio, los recursos (cuáles sirvieron y cuáles no), un libro completo con los cinco dominios, 94 preguntas de práctica con explicación y las lecciones aprendidas.
 
----
+Nació como una **ruta interna de Bitlogic** para quienes quieran rendir la certificación, pero sirve para cualquier persona que estudie en español.
 
-## Bienvenido
-
-Este repositorio no está pensado como un machete, un catálogo de definiciones ni una colección de apuntes sueltos.
-
-La idea es otra: que puedas abrir el primer capítulo y avanzar como si tuvieras a un profesor particular sentado enfrente, construyendo cada concepto sobre el anterior.
-
-Vamos a empezar por preguntas muy simples:
-
-- ¿qué es realmente un LLM?
-- ¿qué puede hacer solo y qué no?
-- ¿qué cambia cuando le damos acceso a tools?
-- ¿cuándo un sistema pasa de ser un workflow a comportarse como un agent?
-- ¿cómo controlamos esa autonomía para que siga siendo confiable?
-
-Y a medida que avancemos, esas respuestas se van a conectar con temas más grandes como **MCP**, **Claude Code**, **subagents**, **structured outputs**, **context management**, **reliability**, **CI/CD** y **production architecture**.
-
-El objetivo no es que memorices términos. El objetivo es que, cuando llegues a una pregunta del examen o a un problema real de arquitectura, puedas pensar:
-
-> “Entiendo qué está pasando, qué alternativas tengo y por qué una solución es mejor que otra.”
+> **Idioma.** Las explicaciones están en español rioplatense. Todos los conceptos, parámetros, comandos y nombres de productos van **también en inglés**, porque el examen se rinde en inglés y hay que reconocer los términos tal como aparecen en los enunciados. Las preguntas de práctica están en inglés, como en el examen.
 
 ---
 
-# Cómo está construida esta guía
+## Por dónde empezar
 
-El material se apoya en tres capas:
+| Si querés… | Andá a |
+|---|---|
+| Saber cómo es el examen (formato, blueprint, puntaje, logística de Pearson) | [`01-el-examen/`](01-el-examen/README.md) |
+| Armar tu plan de estudio (prerrequisitos, recursos, orden, tiempos) | [`02-ruta-de-preparacion/`](02-ruta-de-preparacion/README.md) |
+| Estudiar los temas | [`03-libro/`](03-libro/00-indice.md) (también en [EPUB](03-libro/El-libro-de-SoporteBot-CCAR-F.epub) para Kindle) |
+| Practicar con preguntas tipo examen | [`04-practica/`](04-practica/README.md) |
+| Leer las dificultades, recomendaciones y aprendizajes | [`05-experiencia/`](05-experiencia/README.md) |
+| Ver dónde el curso dice algo distinto de la guía oficial | [`DIVERGENCES.md`](DIVERGENCES.md) |
 
-1. **CCAR-F Exam Guide y documentación oficial de Anthropic** — son la fuente de verdad.
-2. **Curso de Jacob Bushong** — funciona como backbone para asegurar amplitud y cobertura.
-3. **Fuentes complementarias confiables** — se incorporan cuando permiten explicar mejor, actualizar o profundizar un concepto.
+## La ruta en una página
 
-No se reproducen transcripciones de Udemy. Cada capítulo se vuelve a escribir desde cero, con un orden pedagógico propio.
+1. **Leé [`01-el-examen`](01-el-examen/README.md)** para entender qué se evalúa: 5 dominios, 30 tareas oficiales, 6 escenarios.
+2. **Mirá el curso de Udemy de Jacob Bushong** una vez, de corrido, para tener el mapa general. Detalles en [`02-ruta-de-preparacion`](02-ruta-de-preparacion/README.md).
+3. **Estudiá el [libro](03-libro/00-indice.md) capítulo por capítulo**, en el orden del curso. Cada capítulo marca qué vale para el examen y dónde el curso difiere de la guía oficial.
+4. **Al terminar cada módulo**, hacé las [preguntas de práctica](04-practica/README.md) de ese módulo, de a una y sin mirar la respuesta.
+5. **Al final**, repasá con el [mapa de confusiones](03-libro/19-mapa-de-confusiones.md) y hacé **practice exams cronometrados**. Después de cada uno, analizá los errores contra el mapa.
+6. **La noche anterior**, solo la tabla final del mapa de confusiones.
 
-## Para quién está pensada
+## Qué hay en el repo
 
-Para **Software Engineers desde junior hasta senior**.
-
-No asumimos conocimiento previo de Claude, agents o MCP. Incluso los conceptos básicos se explican desde el principio. Al mismo tiempo, cada capítulo profundiza hasta un nivel útil para un engineer experimentado.
-
----
-
-# El hilo conductor: BitSupport
-
-Durante todo el recorrido vamos a construir un proyecto ficticio llamado **BitSupport**.
-
-BitSupport empieza siendo algo muy pequeño:
-
-> un asistente interno que ayuda a un equipo de ingeniería a responder consultas técnicas.
-
-Al principio sólo podrá conversar. Después necesitaremos que consulte datos. Más adelante tendrá que usar tools, manejar errores, coordinar tareas, trabajar con MCP, explorar código, utilizar Claude Code, validar outputs y operar con controles de producción.
-
-De esta forma, cada concepto nuevo tendrá una razón para existir.
-
-```text
-Chatbot
-   ↓
-Workflow
-   ↓
-Tools
-   ↓
-Agentic loop
-   ↓
-Planning
-   ↓
-Subagents
-   ↓
-MCP
-   ↓
-Claude Code
-   ↓
-Structured outputs
-   ↓
-Context & reliability
-   ↓
-Production-ready system
+```
+README.md                    → esta portada
+01-el-examen/                → formato, blueprint, escenarios, tareas oficiales, puntaje, Pearson OnVUE
+02-ruta-de-preparacion/      → prerrequisitos, recursos (útiles y poco útiles), orden sugerido, plan de estudio
+03-libro/                    → 18 capítulos (uno por sección del curso) + mapa de confusiones + EPUB
+04-practica/                 → preguntas tipo examen por módulo, con respuesta y explicación ocultas
+05-experiencia/              → dificultades, errores frecuentes, recomendaciones, aprendizajes y Bitflow
+DIVERGENCES.md               → curso frente a guía oficial frente a documentación actual
 ```
 
-Cuando terminemos la guía, no sólo habremos leído los conceptos del examen: habremos construido un proyecto que los conecta de punta a punta.
+## Fuentes y criterio
 
-👉 [Ir al laboratorio BitSupport](lab-bit-support/README.md)
+- La **guía oficial del examen** (Exam Guide de Anthropic) define qué se evalúa. Ante cualquier duda, manda la guía.
+- La **documentación oficial** de Anthropic (Claude API, Agent SDK, Claude Code, MCP) es la fuente técnica.
+- El **curso de Udemy** es el hilo conductor del estudio, pero no es fuente oficial: donde dice algo distinto de la guía, el libro lo marca.
+- Las **preguntas de práctica** de este repo son propias, escritas imitando el estilo del examen. No son preguntas reales del examen.
 
----
+## Aviso
 
-# Roadmap de lectura
-
-> **La regla es simple:** empezá arriba y seguí los enlaces. El repositorio te va indicando qué leer y qué hacer después.
-
-| Orden | Capítulo | Estado |
-|---:|---|---|
-| 0 | [Antes de empezar — el mapa mínimo para entender Claude](00-prerequisites/README.md) | ✅ |
-| 1 | [El examen CCAR-F — qué estamos aprendiendo y para qué](01-exam-overview/README.md) | ✅ |
-| 2 | [De un LLM a un Agent — Agentic Architecture Foundations](02-agentic-architecture-foundations/README.md) | ✅ |
-| 3 | Task Decomposition & Planning | ⏳ Siguiente |
-| 4 | Multi-Agent Orchestration | ⬜ |
-| 5 | Reliability & Human Oversight | ⬜ |
-| 6 | Tool Design Fundamentals | ⬜ |
-| 7 | Building MCP Servers | ⬜ |
-| 8 | MCP Production & Built-in Tools | ⬜ |
-| 9 | Claude Code — Architecture & Setup | ⬜ |
-| 10 | Claude Code — `CLAUDE.md` Configuration | ⬜ |
-| 11 | Claude Code — Slash Commands, Skills & Subagents | ⬜ |
-| 12 | Claude Code — Hooks, SDK & CI/CD | ⬜ |
-| 13 | Writing Effective Prompts | ⬜ |
-| 14 | Advanced Prompting Techniques | ⬜ |
-| 15 | Structured Output & Evaluation | ⬜ |
-| 16 | The Context Window | ⬜ |
-| 17 | Multi-Agent Failure Modes | ⬜ |
-| 18 | Cross-Session Knowledge & Coherence | ⬜ |
-| 19 | Confidence, Sampling & Provenance | ⬜ |
-| 20 | Practice Exams & Final Review | ⬜ |
-
-👉 [Ver roadmap detallado](ROADMAP.md)
-
----
-
-# Cómo se lee cada capítulo
-
-Los capítulos están escritos como una explicación continua. Las definiciones aparecen **cuando la historia las necesita**, no como un diccionario.
-
-Durante la lectura vas a encontrar cuatro tipos de bloques:
-
-### 🔴 EXAM CRITICAL
-Conceptos que tenés que poder reconocer, explicar y aplicar en un scenario del examen.
-
-### 💭 Pensalo antes de seguir
-Una pregunta conceptual corta. Intentá responder antes de desplegar la solución.
-
-### 🧪 Probalo vos
-Un ejercicio concreto que aplica lo que acabás de aprender al proyecto BitSupport.
-
-### 🧩 Challenge
-Un problema más abierto, parecido a una decisión real de arquitectura o a un scenario de examen.
-
-Las respuestas se mantienen ocultas con bloques desplegables para que puedas pensar antes de verlas.
-
----
-
-# Material de apoyo
-
-Estos archivos acompañan el recorrido, pero **no reemplazan los capítulos**:
-
-- [Blueprint Coverage](BLUEPRINT_COVERAGE.md) — qué task statements ya cubrimos.
-- [Glossary](GLOSSARY.md) — términos técnicos para consulta rápida.
-- [Common Mistakes](COMMON_MISTAKES.md) — errores recurrentes y exam traps.
-- [Fast Review](FAST_REVIEW.md) — repaso para la etapa final, no material principal de aprendizaje.
-- [Course Map](COURSE_MAP.md) — trazabilidad entre Jacob y esta guía.
-- [Progress](PROGRESS.md) — estado actual del recorrido.
-- [Study Protocol](STUDY_PROTOCOL.md) — estándar pedagógico y técnico que debe cumplir cada capítulo.
-
----
-
-# Regla de calidad
-
-Un capítulo no está terminado porque aparezcan todos los conceptos.
-
-Está terminado cuando una persona puede leerlo de principio a fin y responder:
-
-1. **¿qué problema estábamos tratando de resolver?**
-2. **¿por qué apareció este concepto?**
-3. **¿cómo funciona?**
-4. **¿cómo se conecta con lo que aprendimos antes?**
-5. **¿cuándo lo usaría y cuándo no?**
-6. **¿qué podría salir mal?**
-7. **¿cómo lo aplicaría en código o arquitectura?**
-8. **¿cómo podría aparecer en CCAR-F?**
-
----
-
-## Empezar
-
-Si es tu primera vez en la guía:
-
-### 👉 [Capítulo 0 — Antes de empezar](00-prerequisites/README.md)
-
-Si ya conocés los fundamentos básicos de APIs, JSON y LLMs, igualmente recomendamos una lectura rápida porque allí presentamos el proyecto BitSupport y el mental model que usaremos durante todo el libro.
+Este material no es oficial ni está afiliado a Anthropic. Claude, Claude Code y las demás marcas pertenecen a sus dueños. Los datos del examen (precio, duración, políticas) pueden cambiar: verificalos en las páginas oficiales antes de rendir.
